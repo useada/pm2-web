@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/list"
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -79,11 +78,11 @@ func main() {
 					default:
 					}
 				}
-				fmt.Printf("Num connected clients : %d \r\n", len(clients))
+				// fmt.Printf("Num connected clients : %d \r\n", len(clients))
 			case client := <-removedClientsChan:
 				delete(clients, client)
 				close(client)
-				fmt.Printf("Num connected clients : %d \r\n", len(clients))
+				// fmt.Printf("Num connected clients : %d \r\n", len(clients))
 			case logData := <-logsChan:
 				for logBuffer.Len() >= opts.LogBufferSize {
 					logBuffer.Remove(logBuffer.Front())

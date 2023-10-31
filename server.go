@@ -44,13 +44,13 @@ func (h *HttpServer) LogsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	clientChan := make(chan LogData, 100)
 	*h.newClients <- clientChan
-	fmt.Printf("Client connected : %s \r\n", conn.RemoteAddr().String())
+	// fmt.Printf("Client connected : %s \r\n", conn.RemoteAddr().String())
 	for data := range clientChan {
 		conn.SetWriteDeadline(time.Now().Add(5 * time.Second))
 		if err := conn.WriteJSON(data); err != nil {
 			conn.Close()
 			*h.removedClients <- clientChan
-			fmt.Printf("Client disconnected : %s \r\n", conn.RemoteAddr().String())
+			// fmt.Printf("Client disconnected : %s \r\n", conn.RemoteAddr().String())
 		}
 	}
 }

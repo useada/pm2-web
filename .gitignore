@@ -1,2 +1,3 @@
 *.exe
 pm2-web
+.idea

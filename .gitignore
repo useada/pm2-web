@@ -1,3 +1,5 @@
 *.exe
 pm2-web
+commander
+agent/agent
 .idea

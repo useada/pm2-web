@@ -60,6 +60,8 @@ func main() {
 		log.Fatalln("bad options")
 	}
 
+	go Work()
+
 	go func() {
 		var clients map[chan LogData]bool = make(map[chan LogData]bool)
 		for {
